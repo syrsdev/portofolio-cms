@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="index.html"><img src="./dist/assets/compiled/svg/logo.svg" alt="Logo" srcset=""></a>
+                    <a href="{{ route('dashboard') }}"><img src="../dist/assets/compiled/svg/logo.svg" alt="Logo" srcset=""></a>
                 </div>
                 <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -43,8 +43,8 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item {{ request()->is('dashboard') ? "active" : "" }} ">
+                    <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -54,7 +54,7 @@
 
                 <li class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
+                        <i class="bi bi-file-earmark-person"></i>
                         <span>About </span>
                     </a>
 
@@ -97,7 +97,7 @@
                 </li>
                 <li class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
+                        <i class="bi bi-rocket-takeoff"></i>
                         <span>Portfolio</span>
                     </a>
 
@@ -115,9 +115,9 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item ">
-                    <a href="form-layout.html" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
+                <li class="sidebar-item {{ request()->is('dashboard/contacts') ? "active" : "" }}">
+                    <a href="{{ route('contacts.index') }}" class='sidebar-link'>
+                        <i class="bi bi-inboxes-fill"></i>
                         <span>Contact</span>
                     </a>
                 </li>
@@ -126,8 +126,8 @@
 
                 <form method="POST" action="{{ route('logout') }}" class="sidebar-item w-100" style="cursor: pointer">
                     @csrf
-                    <button type="submit" href="form-layout.html" class='text-white sidebar-link bg-danger btn w-100'>
-                        <i class="text-white bi bi-file-earmark-medical-fill"></i>
+                    <button type="submit" class='text-white sidebar-link bg-danger btn w-100'>
+                        <i class="text-white bi bi-box-arrow-right"></i>
                         <span>Logout cms</span>
                     </button>
                 </form>
