@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacts;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -11,33 +12,33 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('pages.contacts', [
-            "title" => "Contact Info"
-        ]);
-    }
+        $title = "Contact Info";
+        $isDataExist = Contacts::all()->count();
+        $email = Contacts::pluck('email')->first();
+        $telp = Contacts::pluck('telp')->first();
+        $linkedin = Contacts::pluck('linkedin')->first();
+        $instagram = Contacts::pluck('instagram')->first();
+        $github = Contacts::pluck('github')->first();
+        $spotify = Contacts::pluck('spotify')->first();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('pages.contacts', compact('title', 'isDataExist', 'email', 'telp', 'linkedin', 'instagram', 'github', 'spotify'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-    }
+        $credential = $request->validate([
+            'email' => 'nullable|email',
+            'telp' => 'nullable',
+            'linkedin' => 'nullable',
+            'instagram' => 'nullable',
+            'github' => 'nullable',
+            'spotify' => 'nullable',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        Contacts::create($credential);
+        return redirect()->back();
     }
 
     /**
@@ -52,14 +53,6 @@ class ContactController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
     {
         //
     }
