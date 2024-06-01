@@ -43,7 +43,7 @@ class ContactController extends Controller
         ]);
 
         Contacts::create($credential);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data has been added');
     }
 
     /**
@@ -61,6 +61,6 @@ class ContactController extends Controller
         ]);
 
         Contacts::find($id)->update($credential);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data has been updated');
     }
 }

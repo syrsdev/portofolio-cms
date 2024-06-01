@@ -45,7 +45,7 @@
     <!-- Need: Apexcharts -->
     <script src="../dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="../dist/assets/static/js/pages/dashboard.js"></script>
-
+    @include('sweetalert::alert')
 </body>
 
 </html>
