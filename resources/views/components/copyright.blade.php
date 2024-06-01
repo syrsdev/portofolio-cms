@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-auto">
     <div class="clearfix mb-0 footer text-muted">
         <div class="float-start">
             <p>2024 &copy; Surya Nata Ardhana</p>
