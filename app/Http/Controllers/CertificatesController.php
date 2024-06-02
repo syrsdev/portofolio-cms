@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Certificates;
 use Illuminate\Http\Request;
 
 class CertificatesController extends Controller
@@ -11,7 +12,9 @@ class CertificatesController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Certificates';
+        $data = Certificates::all();
+        return view('pages.certificates.index', compact('title', 'data'));
     }
 
     /**
@@ -19,7 +22,8 @@ class CertificatesController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Add Certificates';
+        return view('pages.certificates.create', compact('title'));
     }
 
     /**
@@ -27,7 +31,20 @@ class CertificatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $request->validate([
+            'title' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move("certificates/", $filename);
+            $credential['image'] = $filename;
+        }
+
+        Certificates::create($credential);
+        return redirect('/dashboard/certificates')->with('success', 'Certificates created successfully');
     }
 
     /**
