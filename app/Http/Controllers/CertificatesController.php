@@ -14,6 +14,9 @@ class CertificatesController extends Controller
     {
         $title = 'Certificates';
         $data = Certificates::all();
+        $title = 'Delete ' . $title;
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return view('pages.certificates.index', compact('title', 'data'));
     }
 
@@ -39,36 +42,50 @@ class CertificatesController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move("certificates/", $filename);
+            $file->move('certificates/', $filename);
             $credential['image'] = $filename;
         }
 
         Certificates::create($credential);
         return redirect('/dashboard/certificates')->with('success', 'Certificates created successfully');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $title = 'Edit Certificates';
+        $data = Certificates::find($id);
+        return view('pages.certificates.edit', compact('title', 'data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $credential = $request->validate([
+            'title' => 'required',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $certificate = Certificates::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($certificate->image && file_exists('certificates/' . $certificate->image)) {
+                unlink('certificates/' . $certificate->image);
+            }
+
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('certificates/', $filename);
+            $credential['image'] = $filename;
+        }
+
+        $certificate->update($credential);
+
+        return redirect('/dashboard/certificates')->with('success', 'Certificate updated successfully');
     }
 
     /**
@@ -76,6 +93,11 @@ class CertificatesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $certificate = Certificates::find($id);
+        if ($certificate->image && file_exists('certificates/' . $certificate->image)) {
+            unlink('certificates/' . $certificate->image);
+        }
+        $certificate->delete();
+        return redirect('/dashboard/certificates')->with('success', 'Certificate deleted successfully');
     }
 }

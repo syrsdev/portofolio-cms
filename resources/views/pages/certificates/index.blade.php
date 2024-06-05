@@ -9,7 +9,7 @@
                 <a href="{{ route('certificates.create') }}" class="btn btn-primary ">Add Certificates</a>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -28,9 +28,15 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td><img src="{{ asset('certificates/' . $item->image) }}" alt="{{ $item->image }}"
-                                            width="200" style="object-fit: contain"></td>
+                                            width="150" style="object-fit: contain"></td>
                                     <td>{{ $item->title }}</td>
-                                    <td>@mdo</td>
+                                    <td>
+                                        @include('components.actionbtn', [
+                                            'edit' => route('certificates.edit', $item->id),
+                                            'id' => $item->id,
+                                            'delete' => route('certificates.destroy', $item->id),
+                                        ])
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
