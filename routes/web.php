@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->group(function () {
-        Route::get('/', function () {
-            return view('pages.dashboard', [
-                'title' => 'CMS Portfolio Dashboard',
-            ]);
-        })->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('/certificates', CertificatesController::class);
         Route::resource('/contacts', ContactController::class);

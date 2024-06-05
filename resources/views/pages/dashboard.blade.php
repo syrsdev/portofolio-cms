@@ -17,7 +17,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="font-semibold text-muted">Project</h6>
+                                        <h6 class="font-semibold text-muted">Projects</h6>
                                         <h6 class="mb-0 font-extrabold">112.000</h6>
                                     </div>
                                 </div>
@@ -51,8 +51,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                        <h6 class="font-semibold text-muted">Work experience</h6>
-                                        <h6 class="mb-0 font-extrabold">80.000</h6>
+                                        <h6 class="font-semibold text-muted">My Certificates</h6>
+                                        <h6 class="mb-0 font-extrabold">{{ $allCertificates }}</h6>
                                     </div>
                                 </div>
                             </div>
