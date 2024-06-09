@@ -97,7 +97,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ $active == 'portfolio' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-rocket-takeoff"></i>
                         <span>Portfolio</span>
@@ -110,8 +110,8 @@
 
                         </li>
 
-                        <li class="submenu-item ">
-                            <a href="extra-component-divider.html" class="submenu-link">Skills</a>
+                        <li class="submenu-item {{ $subActive == 'skills' ? 'active' : '' }}">
+                            <a href="{{ route('skills.index') }}" class="submenu-link">Skills</a>
 
                         </li>
                     </ul>

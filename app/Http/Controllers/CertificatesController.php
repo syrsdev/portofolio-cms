@@ -46,7 +46,7 @@ class CertificatesController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('certificates/', $filename);
+            $file->move('images/certificates/', $filename);
             $credential['image'] = $filename;
         }
 
@@ -79,13 +79,13 @@ class CertificatesController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
-            if ($certificate->image && file_exists('certificates/' . $certificate->image)) {
-                unlink('certificates/' . $certificate->image);
+            if ($certificate->image && file_exists('images/certificates/' . $certificate->image)) {
+                unlink('images/certificates/' . $certificate->image);
             }
 
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('certificates/', $filename);
+            $file->move('images/certificates/', $filename);
             $credential['image'] = $filename;
         }
 
@@ -100,8 +100,8 @@ class CertificatesController extends Controller
     public function destroy(string $id)
     {
         $certificate = Certificates::find($id);
-        if ($certificate->image && file_exists('certificates/' . $certificate->image)) {
-            unlink('certificates/' . $certificate->image);
+        if ($certificate->image && file_exists('images/certificates/' . $certificate->image)) {
+            unlink('images/certificates/' . $certificate->image);
         }
         $certificate->delete();
         return redirect('/dashboard/certificates')->with('success', 'Certificate deleted successfully');
