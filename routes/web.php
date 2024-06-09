@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EducationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/post', [AboutController::class, 'store'])->name('about.post');
             Route::put('/{id}/update', [AboutController::class, 'update'])->name('about.update');
         });
+        Route::resource('/educations', EducationController::class);
         Route::resource('/certificates', CertificatesController::class);
         Route::resource('/contacts', ContactController::class);
     });

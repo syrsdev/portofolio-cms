@@ -14,9 +14,9 @@ class CertificatesController extends Controller
     {
         $title = 'Certificates';
         $data = Certificates::all();
-        $titleModal = 'Delete ' . $title;
         $active = 'about';
         $subActive = 'certificates';
+        $titleModal = 'Delete ' . $title;
         $text = "Are you sure you want to delete?";
         confirmDelete($titleModal, $text);
         return view('pages.certificates.index', compact('title', 'data', 'active', 'subActive'));
@@ -28,7 +28,9 @@ class CertificatesController extends Controller
     public function create()
     {
         $title = 'Add Certificates';
-        return view('pages.certificates.create', compact('title'));
+        $active = 'about';
+        $subActive = 'certificates';
+        return view('pages.certificates.create', compact('title', 'active', 'subActive'));
     }
 
     /**
@@ -58,7 +60,9 @@ class CertificatesController extends Controller
     {
         $title = 'Edit Certificates';
         $data = Certificates::find($id);
-        return view('pages.certificates.edit', compact('title', 'data'));
+        $active = 'about';
+        $subActive = 'certificates';
+        return view('pages.certificates.edit', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**

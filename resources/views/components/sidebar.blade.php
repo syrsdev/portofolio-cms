@@ -66,8 +66,8 @@
                             <a href="{{ route('about.index') }}" class="submenu-link">About me</a>
                         </li>
 
-                        <li class="submenu-item ">
-                            <a href="component-alert.html" class="submenu-link">Education</a>
+                        <li class="submenu-item {{ $subActive == 'educations' ? 'active' : '' }}">
+                            <a href="{{ route('educations.index') }}" class="submenu-link">Education</a>
 
                         </li>
 
