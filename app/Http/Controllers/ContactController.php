@@ -26,7 +26,10 @@ class ContactController extends Controller
         $github = Contacts::pluck('github')->first();
         $spotify = Contacts::pluck('spotify')->first();
 
-        return view('pages.contacts', compact('title','id' ,'isDataExist', 'email', 'telp', 'linkedin', 'instagram', 'github', 'spotify'));
+        $active = 'contacts';
+        $subActive = null;
+
+        return view('pages.contacts', compact('title','id' ,'isDataExist', 'email', 'telp', 'linkedin', 'instagram', 'github', 'spotify', 'active', 'subActive'));
     }
     /**
      * Store a newly created resource in storage.

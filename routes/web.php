@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
@@ -19,7 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
+        
+        Route::prefix('about')->group(function () {
+            Route::get('/', [AboutController::class, 'index'])->name('about.index');
+            Route::post('/post', [AboutController::class, 'store'])->name('about.post');
+            Route::put('/{id}/update', [AboutController::class, 'update'])->name('about.update');
+        });
         Route::resource('/certificates', CertificatesController::class);
         Route::resource('/contacts', ContactController::class);
     });

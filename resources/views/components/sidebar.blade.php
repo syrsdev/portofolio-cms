@@ -44,7 +44,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ request()->is('dashboard') ? 'active' : '' }} ">
+                <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }} ">
                     <a href="{{ route('dashboard') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
@@ -54,7 +54,7 @@
                 </li>
 
                 <li
-                    class="sidebar-item has-sub {{ request()->is('dashboard/certificates') || request()->is('dashboard/certificates/*') ? 'active' : '' }}">
+                    class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-person"></i>
                         <span>About </span>
@@ -62,9 +62,8 @@
 
                     <ul class="submenu ">
 
-                        <li class="submenu-item ">
-                            <a href="component-accordion.html" class="submenu-link">About me</a>
-
+                        <li class="submenu-item {{ $subActive == 'about' ? 'active' : '' }}">
+                            <a href="{{ route('about.index') }}" class="submenu-link">About me</a>
                         </li>
 
                         <li class="submenu-item ">
@@ -73,7 +72,7 @@
                         </li>
 
                         <li
-                            class="submenu-item {{ request()->is('dashboard/certificates') || request()->is('dashboard/certificates/*') ? 'active' : '' }}">
+                            class="submenu-item {{ $subActive == 'certificates' ? 'active' : '' }}">
                             <a href="{{ route('certificates.index') }}" class="submenu-link">Certificate</a>
 
                         </li>
@@ -118,7 +117,7 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item {{ request()->is('dashboard/contacts') ? 'active' : '' }}">
+                <li class="sidebar-item {{ $active == 'contacts' ? 'active' : '' }}">
                     <a href="{{ route('contacts.index') }}" class='sidebar-link'>
                         <i class="bi bi-inboxes-fill"></i>
                         <span>Contact</span>

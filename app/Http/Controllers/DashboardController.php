@@ -10,6 +10,8 @@ class DashboardController extends Controller
     public function index(){
         $title = 'CMS Portfolio Dashboard';
         $allCertificates = Certificates::all()->count();
-        return view('pages.dashboard', compact('title','allCertificates'));
+        $active = 'dashboard';
+        $subActive = null;
+        return view('pages.dashboard', compact('title','allCertificates', 'active', 'subActive'));
     }
 }

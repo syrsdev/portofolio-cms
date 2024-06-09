@@ -14,10 +14,12 @@ class CertificatesController extends Controller
     {
         $title = 'Certificates';
         $data = Certificates::all();
-        $title = 'Delete ' . $title;
+        $titleModal = 'Delete ' . $title;
+        $active = 'about';
+        $subActive = 'certificates';
         $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text);
-        return view('pages.certificates.index', compact('title', 'data'));
+        confirmDelete($titleModal, $text);
+        return view('pages.certificates.index', compact('title', 'data', 'active', 'subActive'));
     }
 
     /**
