@@ -105,8 +105,8 @@
 
                     <ul class="submenu ">
 
-                        <li class="submenu-item ">
-                            <a href="extra-component-avatar.html" class="submenu-link">Projects</a>
+                        <li class="submenu-item {{ $subActive == 'projects' ? 'active' : '' }}">
+                            <a href="{{ route('projects.index') }}" class="submenu-link">Projects</a>
 
                         </li>
 
@@ -124,9 +124,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-title">Logout</li>
-
-                <form method="POST" action="{{ route('logout') }}" class="sidebar-item w-100" style="cursor: pointer">
+                {{-- <li class="sidebar-title">Logout</li> --}}
+                <form method="POST" action="{{ route('logout') }}" class="mt-3 sidebar-item w-100" style="cursor: pointer">
                     @csrf
                     <button type="submit" class='text-white sidebar-link bg-danger btn w-100'>
                         <i class="text-white bi bi-box-arrow-right"></i>

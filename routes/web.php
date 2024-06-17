@@ -5,6 +5,7 @@ use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
             Route::put('/{id}/update', [AboutController::class, 'update'])->name('about.update');
         });
         Route::resource('/educations', EducationController::class);
+        Route::resource('/projects', ProjectsController::class);
         Route::resource('/skills', SkillController::class);
         Route::resource('/certificates', CertificatesController::class);
         Route::resource('/contacts', ContactController::class);

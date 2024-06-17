@@ -14,7 +14,7 @@
                             <div class="mb-3">
                                 <label for="full" class="form-label">About me</label>
                                 <!-- Quill Editor Container -->
-                                <div id="full">{!! $data->about !!}</div>
+                                <div id="full"></div>
                                 <!-- Hidden Input Field -->
                                 <input type="hidden" name="about" id="aboutInput">
                             </div>
