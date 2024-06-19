@@ -9,4 +9,9 @@ class ProjectSkills extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function skill()
+    {
+        return $this->belongsTo(Skills::class, 'skill_id', 'id');
+    }
 }

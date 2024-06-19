@@ -37,7 +37,7 @@
                                     <td>{{ $item->github_link }}</td>
                                     <td>{{ $item->figma_link }}</td>
                                     <td>
-                                        <a class="mb-2 w-100 btn btn-secondary">skills</a>
+                                        <a href="{{ route('projectSkills.index', $item->id) }}" class="mb-2 w-100 btn btn-secondary">skills</a>
                                         @include('components.actionbtn', [
                                             'edit' => route('projects.edit', $item->id),
                                             'id' => $item->id,

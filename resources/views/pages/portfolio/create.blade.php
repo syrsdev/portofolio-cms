@@ -78,9 +78,6 @@
             theme: 'snow'
         });
 
-        // Fill Quill editor with initial content if editing existing data
-
-
         // Handle form submission
         document.getElementById('form').addEventListener('submit', function() {
             // Copy content from Quill editor to hidden input
@@ -88,6 +85,3 @@
         });
     </script>
 @endsection
-{{-- @if ($isDataExist)
-            quill.root.innerHTML = `{!! $data->about !!}`;
-        @endif --}}

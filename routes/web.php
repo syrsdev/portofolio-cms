@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ProjectSkillController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,14 @@ Route::middleware('auth')->group(function () {
             Route::put('/{id}/update', [AboutController::class, 'update'])->name('about.update');
         });
         Route::resource('/educations', EducationController::class);
-        Route::resource('/projects', ProjectsController::class);
-        Route::resource('/skills', SkillController::class);
         Route::resource('/certificates', CertificatesController::class);
+        Route::resource('/projects', ProjectsController::class);
+        Route::prefix('projects/{id}/skills')->group(function () {
+            Route::get('/', [ProjectSkillController::class, 'index'])->name('projectSkills.index');
+            Route::post('/post', [ProjectSkillController::class, 'store'])->name('projectSkills.post');
+            Route::delete('/{iddel}/delete', [ProjectSkillController::class, 'delete'])->name('projectSkills.delete');
+        });
+        Route::resource('/skills', SkillController::class);
         Route::resource('/contacts', ContactController::class);
     });
 });
