@@ -81,19 +81,19 @@
 
                 </li>
 
-                <li class="sidebar-item has-sub">
+                <li class="sidebar-item has-sub {{ $active == 'work' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Experience</span>
                     </a>
 
                     <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="component-breadcrumb.html" class="submenu-link">Work Experience</a>
+                        <li class="submenu-item {{ $subActive == 'experience' ? 'active' : '' }}">
+                            <a href="{{ route('WorkExperience.index') }}" class="submenu-link">Work Experience</a>
                         </li>
 
-                        <li class="submenu-item ">
-                            <a href="component-button.html" class="submenu-link">Work Status</a>
+                        <li class="submenu-item {{ $subActive == 'status' ? 'active' : '' }}">
+                            <a href="{{ route('WorkStatus.index') }}" class="submenu-link">Work Status</a>
                         </li>
                     </ul>
                 </li>

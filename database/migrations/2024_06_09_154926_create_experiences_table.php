@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('company');
             $table->string('location');
+            $table->string('location_type');
             $table->date('start_date');
             $table->date('end_date');
             $table->foreignId('status_id')->constrained('work_statuses');          
