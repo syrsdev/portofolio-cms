@@ -47,7 +47,8 @@ class CertificatesController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/certificates/', $filename);
-            $credential['image'] = $filename;
+            $url = url('/images/certificates/' . $filename);
+            $credential['image'] = $url;
         }
 
         Certificates::create($credential);
@@ -79,14 +80,15 @@ class CertificatesController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
-            if ($certificate->image && file_exists('images/certificates/' . $certificate->image)) {
-                unlink('images/certificates/' . $certificate->image);
+            if (basename($certificate->image) && file_exists('images/certificates/' . basename($certificate->image))) {
+                unlink('images/certificates/' . basename($certificate->image));
             }
 
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/certificates/', $filename);
-            $credential['image'] = $filename;
+            $url = url('/images/certificates/' . $filename);
+            $credential['image'] = $url;
         }
 
         $certificate->update($credential);
@@ -100,8 +102,8 @@ class CertificatesController extends Controller
     public function destroy(string $id)
     {
         $certificate = Certificates::find($id);
-        if ($certificate->image && file_exists('images/certificates/' . $certificate->image)) {
-            unlink('images/certificates/' . $certificate->image);
+        if (basename($certificate->image) && file_exists('images/certificates/' . basename($certificate->image))) {
+            unlink('images/certificates/' . basename($certificate->image));
         }
         $certificate->delete();
         return redirect('/dashboard/certificates')->with('success', 'Certificate deleted successfully');

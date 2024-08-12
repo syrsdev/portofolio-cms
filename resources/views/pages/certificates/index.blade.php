@@ -27,8 +27,8 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td><img src="{{ asset('/images/certificates/' . $item->image) }}" alt="{{ $item->image }}"
-                                            width="150" style="object-fit: contain"></td>
+                                    <td><img src="{{ asset($item->image) }}" alt="{{ $item->image }}" width="150"
+                                            style="object-fit: contain"></td>
                                     <td>{{ $item->title }}</td>
                                     <td>
                                         @include('components.actionbtn', [
