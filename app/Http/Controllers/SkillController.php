@@ -44,7 +44,8 @@ class SkillController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/skills/', $filename);
-            $credential['image'] = $filename;
+            $url = url('/images/skills/' . $filename);
+            $credential['image'] = $url;
         }
 
         Skills::create($credential);
@@ -76,14 +77,15 @@ class SkillController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
-            if ($skill->image && file_exists('images/skills/' . $skill->image)) {
-                unlink('images/skills/' . $skill->image);
+            if (basename($skill->image) && file_exists('images/skills/' . basename($skill->image))) {
+                unlink('images/skills/' . basename($skill->image));
             }
 
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/skills/', $filename);
-            $credential['image'] = $filename;
+            $url = url('/images/skills/' . $filename);
+            $credential['image'] = $url;
         }
 
         $skill->update($credential);
@@ -97,8 +99,8 @@ class SkillController extends Controller
     public function destroy(string $id)
     {
         $skill = Skills::find($id);
-        if ($skill->image && file_exists('images/skills/' . $skill->image)) {
-            unlink('images/skills/' . $skill->image);
+        if (basename($skill->image) && file_exists('images/skills/' . basename($skill->image))) {
+            unlink('images/skills/' . basename($skill->image));
         }
         $skill->delete();
         return redirect('/dashboard/skills')->with('success', 'skill deleted successfully');

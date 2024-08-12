@@ -26,7 +26,7 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td><img width="200" src='{{ asset("/images/skills/". $item->image)}}' alt="{{ $item->image }}"></td>
+                                    <td><img width="200" src='{{ asset($item->image) }}' alt="{{ $item->image }}"></td>
                                     <td>{{ $item->skill }}</td>
                                     <td>
                                         @include('components.actionbtn', [
