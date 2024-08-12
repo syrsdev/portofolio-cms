@@ -47,11 +47,12 @@ class ProjectsController extends Controller
             'figma_link' => 'nullable',
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/projects'), $filename);
-            $credentials['image'] = $filename;
+            $url = url('/images/projects/' . $filename);
+            $credentials['image'] = $url;
         }
 
         Projects::create($credentials);
@@ -86,16 +87,17 @@ class ProjectsController extends Controller
         ]);
 
         $project = Projects::findOrFail($id);
-        
+
         if ($request->hasFile('image')) {
-            if ($project->image && file_exists('images/projects/' . $project->image)) {
-                unlink('images/projects/' . $project->image);
+            if (basename($project->image) && file_exists('images/projects/' . basename($project->image))) {
+                unlink('images/projects/' . basename($project->image));
             }
 
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/projects/', $filename);
-            $credentials['image'] = $filename;
+            $url = url('/images/projects/' . $filename);
+            $credentials['image'] = $url;
         }
 
         $project->update($credentials);
@@ -108,8 +110,8 @@ class ProjectsController extends Controller
     public function destroy(string $id)
     {
         $project = projects::find($id);
-        if ($project->image && file_exists('images/projects/' . $project->image)) {
-            unlink('images/projects/' . $project->image);
+        if (basename($project->image) && file_exists('images/projects/' . basename($project->image))) {
+            unlink('images/projects/' . basename($project->image));
         }
         $project->delete();
         return redirect('/dashboard/projects')->with('success', 'project deleted successfully');

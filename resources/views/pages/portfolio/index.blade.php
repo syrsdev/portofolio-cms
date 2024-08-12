@@ -30,14 +30,14 @@
                             @foreach ($data as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td><img width="200" src='{{ asset('/images/projects/' . $item->image) }}'
-                                            alt="{{ $item->image }}"></td>
+                                    <td><img width="200" src='{{ asset($item->image) }}' alt="{{ $item->image }}"></td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->link }}</td>
                                     <td>{{ $item->github_link }}</td>
                                     <td>{{ $item->figma_link }}</td>
                                     <td>
-                                        <a href="{{ route('projectSkills.index', $item->id) }}" class="mb-2 w-100 btn btn-secondary">skills</a>
+                                        <a href="{{ route('projectSkills.index', $item->id) }}"
+                                            class="mb-2 w-100 btn btn-secondary">skills</a>
                                         @include('components.actionbtn', [
                                             'edit' => route('projects.edit', $item->id),
                                             'id' => $item->id,
