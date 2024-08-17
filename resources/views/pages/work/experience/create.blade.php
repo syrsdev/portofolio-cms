@@ -35,6 +35,12 @@
                     <label for="end_date" class="form-label">End date</label>
                     <input type="date" class="form-control" id="end_date" name="end_date">
                 </div>
+                <div class="mb-3 form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="current_date">
+                    <label class="form-check-label" for="current_date">
+                        current education
+                    </label>
+                </div>
                 <div class="mb-3">
                     <label for="status_id" class="form-label">status</label>
                     <select class="form-select" name="status_id" id="status_id">
