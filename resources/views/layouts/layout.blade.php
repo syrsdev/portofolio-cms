@@ -25,24 +25,25 @@
     <script src="{{ asset('/dist/assets/static/js/initTheme.js') }}"></script>
     <div id="app">
         @include('components.sidebar')
-        
+
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
+
             @yield('section')
 
             @include('components.copyright')
-            
+
         </div>
     </div>
-    
+
     <script src="{{ asset('/dist/assets/static/js/components/dark.js') }}"></script>
     <script src="{{ asset('/dist/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('/dist/assets/compiled/js/app.js') }}"></script>
+    @vite('resources/js/currentdate.js')
     @include('sweetalert::alert')
     @yield('script')
 </body>
