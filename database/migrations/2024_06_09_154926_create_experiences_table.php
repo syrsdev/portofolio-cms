@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('location');
             $table->string('location_type');
             $table->date('start_date');
-            $table->date('end_date');
-            $table->foreignId('status_id')->constrained('work_statuses');          
+            $table->date('end_date')->nullable();
+            $table->foreignId('status_id')->constrained('work_statuses');
             $table->timestamps();
         });
     }
