@@ -22,6 +22,13 @@
                     <label for="end_date" class="form-label">End Date</label>
                     <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $data->end_date }}">
                 </div>
+                <div class="mb-5 form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="current_date"
+                        {{ $data->end_date == null ? 'checked' : '' }}>
+                    <label class="form-check-label" for="current_date">
+                        current education
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
