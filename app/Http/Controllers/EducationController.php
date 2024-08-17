@@ -41,7 +41,7 @@ class EducationController extends Controller
         $credentials = $request->validate([
             'name' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'end_date' => 'nullable|date',
         ]);
 
         Educations::create($credentials);
@@ -49,19 +49,11 @@ class EducationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $title = 'Educations EEdit';
+        $title = 'Educations Edit';
         $active = 'about';
         $subActive = 'educations';
         $data = Educations::find($id);
@@ -76,8 +68,11 @@ class EducationController extends Controller
         $credentials = $request->validate([
             'name' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'end_date' => 'nullable|date',
         ]);
+        if ($request->end_date == null) {
+            $credentials['end_date'] = null;
+        };
         Educations::find($id)->update($credentials);
         return redirect()->route('educations.index')->with('success', 'Education updated successfully');
     }
