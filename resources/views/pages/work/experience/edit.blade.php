@@ -37,11 +37,19 @@
                     <label for="end_date" class="form-label">End date</label>
                     <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $data->end_date }}">
                 </div>
+                <div class="mb-3 form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="current_date"
+                        {{ $data->end_date == null ? 'checked' : '' }}>
+                    <label class="form-check-label" for="current_date">
+                        current education
+                    </label>
+                </div>
                 <div class="mb-3">
                     <label for="status_id" class="form-label">status</label>
                     <select class="form-select" name="status_id" id="status_id">
                         @foreach ($status as $item)
-                            <option value="{{ $item->id }}" {{ $data->status_id == $item->id ? 'selected' : '' }}>{{ $item->title }}</option>
+                            <option value="{{ $item->id }}" {{ $data->status_id == $item->id ? 'selected' : '' }}>
+                                {{ $item->title }}</option>
                         @endforeach
                     </select>
                 </div>
