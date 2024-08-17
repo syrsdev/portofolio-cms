@@ -48,7 +48,7 @@ class WorkExperienceController extends Controller
             'location' => 'required',
             'location_type' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
+            'end_date' => 'nullable',
             'status_id' => 'required',
         ]);
 
@@ -81,10 +81,12 @@ class WorkExperienceController extends Controller
             'location' => 'required',
             'location_type' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
+            'end_date' => 'nullable',
             'status_id' => 'required',
         ]);
-
+        if ($request->end_date == null) {
+            $credentials['end_date'] = null;
+        };
         $data = experience::find($id);
         $data->update($credentials);
         return redirect()->route('WorkExperience.index')->with('success', 'Data Updated Successfully');
