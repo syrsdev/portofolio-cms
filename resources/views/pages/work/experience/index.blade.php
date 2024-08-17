@@ -32,8 +32,9 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->position }}</td>
                                     <td>{{ $item->company }}</td>
-                                    <td>{{ $item->location_type  . ' - ' . $item->location }}</td>
-                                    <td>{{ $item->start_date . ' - ' . $item->end_date }}</td>
+                                    <td>{{ $item->location_type . ' - ' . $item->location }}</td>
+                                    <td>{{ $item->start_date . ' - ' }}{{ $item->end_date == null ? 'Present' : $item->end_date }}
+                                    </td>
                                     <td>{{ $item->status->title }}</td>
                                     <td>
                                         @include('components.actionbtn', [
