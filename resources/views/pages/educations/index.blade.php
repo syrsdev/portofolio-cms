@@ -29,7 +29,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->start_date }}</td>
-                                    <td>{{ $item->end_date }}</td>
+                                    <td>{{ $item->end_date == null ? 'Present' : $item->end_date }}</td>
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('educations.edit', $item->id),
