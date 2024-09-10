@@ -40,6 +40,7 @@ class EducationController extends Controller
     {
         $credentials = $request->validate([
             'name' => 'required',
+            'major' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date',
         ]);
@@ -67,6 +68,7 @@ class EducationController extends Controller
     {
         $credentials = $request->validate([
             'name' => 'required',
+            'major' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date',
         ]);
