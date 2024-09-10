@@ -14,6 +14,11 @@
                         value="{{ $data->name }}">
                 </div>
                 <div class="mb-3">
+                    <label for="major" class="form-label">Major</label>
+                    <input type="text" class="form-control" id="major" name="major" placeholder="Enter major"
+                        value="{{ $data->major }}">
+                </div>
+                <div class="mb-3">
                     <label for="start_date" class="form-label">Start Date</label>
                     <input type="date" class="form-control" id="start_date" name="start_date"
                         value="{{ $data->start_date }}">

@@ -14,6 +14,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Major</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">End Date</th>
                         </tr>
@@ -21,13 +22,14 @@
                     <tbody>
                         @if ($data->count() == 0)
                             <tr>
-                                <td colspan="4" class="text-center">No Data Found.</td>
+                                <td colspan="5" class="text-center">No Data Found.</td>
                             </tr>
                         @else
                             @foreach ($data as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $item->name }}</td>
+                                    <td>{{ $item->major }}</td>
                                     <td>{{ $item->start_date }}</td>
                                     <td>{{ $item->end_date == null ? 'Present' : $item->end_date }}</td>
                                     <td>
