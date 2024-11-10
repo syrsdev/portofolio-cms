@@ -2,9 +2,12 @@
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="logo">
-                    <a href="{{ route('dashboard') }}"><img src="{{ asset('/dist/assets/compiled/svg/logo.svg') }}"
-                            alt="Logo" srcset=""></a>
+                <div class="w-100 d-flex">
+                    <a href="{{ route('dashboard') }}">
+                        <img class="w-100 d-flex " style="height:50px !important;" src="{{ asset('nata-purple.svg') }}"
+                            alt="Logo" srcset="">
+                        <h1 style="font-size: 20px">syrsdev</h1>
+                    </a>
                 </div>
                 <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -53,8 +56,7 @@
 
                 </li>
 
-                <li
-                    class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ $active == 'about' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-person"></i>
                         <span>About </span>
@@ -71,8 +73,7 @@
 
                         </li>
 
-                        <li
-                            class="submenu-item {{ $subActive == 'certificates' ? 'active' : '' }}">
+                        <li class="submenu-item {{ $subActive == 'certificates' ? 'active' : '' }}">
                             <a href="{{ route('certificates.index') }}" class="submenu-link">Certificate</a>
 
                         </li>
@@ -125,7 +126,8 @@
                 </li>
 
                 {{-- <li class="sidebar-title">Logout</li> --}}
-                <form method="POST" action="{{ route('logout') }}" class="mt-3 sidebar-item w-100" style="cursor: pointer">
+                <form method="POST" action="{{ route('logout') }}" class="mt-3 sidebar-item w-100"
+                    style="cursor: pointer">
                     @csrf
                     <button type="submit" class='text-white sidebar-link bg-danger btn w-100'>
                         <i class="text-white bi bi-box-arrow-right"></i>
