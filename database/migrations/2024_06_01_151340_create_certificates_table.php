@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('image')->nullable();    
+            $table->string('image')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
