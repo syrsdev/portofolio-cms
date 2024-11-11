@@ -41,6 +41,7 @@ class CertificatesController extends Controller
         $credential = $request->validate([
             'title' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
@@ -49,6 +50,14 @@ class CertificatesController extends Controller
             $file->move('images/certificates/', $filename);
             $url = url('/images/certificates/' . $filename);
             $credential['image'] = $url;
+        }
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('files/certificates/', $filename);
+            $url = url('/files/certificates/' . $filename);
+            $credential['file'] = $url;
         }
 
         Certificates::create($credential);
@@ -74,6 +83,7 @@ class CertificatesController extends Controller
         $credential = $request->validate([
             'title' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf|max:2048',
         ]);
 
         $certificate = Certificates::findOrFail($id);
@@ -89,6 +99,18 @@ class CertificatesController extends Controller
             $file->move('images/certificates/', $filename);
             $url = url('/images/certificates/' . $filename);
             $credential['image'] = $url;
+        }
+        if ($request->hasFile('file')) {
+            // Delete the old file if it exists
+            if (basename($certificate->file) && file_exists('files/certificates/' . basename($certificate->file))) {
+                unlink('files/certificates/' . basename($certificate->file));
+            }
+
+            $file = $request->file('file');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('files/certificates/', $filename);
+            $url = url('/files/certificates/' . $filename);
+            $credential['file'] = $url;
         }
 
         $certificate->update($credential);

@@ -13,23 +13,25 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Image</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">File</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($data->count() == 0)
                             <tr>
-                                <td colspan="4" class="text-center">No Data Found.</td>
+                                <td colspan="5" class="text-center">No Data Found.</td>
                             </tr>
                         @else
                             @foreach ($data as $item)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $item->title }}</td>
                                     <td><img src="{{ asset($item->image) }}" alt="{{ $item->image }}" width="150"
                                             style="object-fit: contain"></td>
-                                    <td>{{ $item->title }}</td>
+                                    <td><iframe src="{{ asset($item->file) }}" width="150" frameborder="0"></iframe></td>
                                     <td>
                                         @include('components.actionbtn', [
                                             'edit' => route('certificates.edit', $item->id),

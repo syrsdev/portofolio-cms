@@ -15,6 +15,10 @@
                     <label for="image" class="form-label">Image</label>
                     <input type="file" class="image-preview-filepond" id="image" name="image">
                 </div>
+                <div class="mb-3">
+                    <label for="file" class="form-label">file</label>
+                    <input type="file" class="basic-filepond" id="file" name="file">
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
