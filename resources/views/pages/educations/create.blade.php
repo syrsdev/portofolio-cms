@@ -17,11 +17,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="start_date" class="form-label">Start Date</label>
-                    <input type="date" class="form-control" id="start_date" name="start_date">
+                    <input type="month" class="form-control" id="start_date" name="start_date">
                 </div>
                 <div class="mb-3">
                     <label for="end_date" class="form-label">End Date</label>
-                    <input type="date" class="form-control" id="end_date" name="end_date">
+                    <input type="month" class="form-control" id="end_date" name="end_date">
                 </div>
                 <div class="mb-5 form-check">
                     <input class="form-check-input" type="checkbox" value="" id="current_date">
