@@ -12,11 +12,8 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="full" class="form-label">About me</label>
-                                <!-- Quill Editor Container -->
-                                <div id="full"></div>
-                                <!-- Hidden Input Field -->
-                                <input type="hidden" name="about" id="aboutInput">
+                                <label for="dark" class="form-label">About me</label>
+                                <textarea id="dark" cols="30" rows="10" name="about">{!! $data->about !!}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
@@ -29,11 +26,8 @@
                         <form action="{{ route('about.post') }}" method="POST" id="aboutForm">
                             @csrf
                             <div class="mb-3">
-                                <label for="full" class="form-label">About me</label>
-                                <!-- Quill Editor Container -->
-                                <div id="full"></div>
-                                <!-- Hidden Input Field -->
-                                <input type="hidden" name="about" id="aboutInput">
+                                <label for="dark" class="form-label">About me</label>
+                                <textarea id="dark" cols="30" rows="10" name="about">{!! $data->about !!}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
@@ -49,27 +43,14 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('/dist/assets/extensions/quill/quill.snow.css') }}">
-    <link rel="stylesheet" href="{{ asset('/dist/assets/extensions/quill/quill.bubble.css') }}">
+    <style>
+        .tox .tox-promotion {
+            display: none !important;
+        }
+    </style>
 @endsection
 
 @section('script')
-    <script src="{{ asset('/dist/assets/extensions/quill/quill.min.js') }}"></script>
-    <script>
-        // Initialize Quill editor
-        var quill = new Quill('#full', {
-            theme: 'snow'
-        });
-
-        // Fill Quill editor with initial content if editing existing data
-        @if ($isDataExist)
-            quill.root.innerHTML = `{!! $data->about !!}`;
-        @endif
-
-        // Handle form submission
-        document.getElementById('aboutForm').addEventListener('submit', function () {
-            // Copy content from Quill editor to hidden input
-            document.getElementById('aboutInput').value = quill.root.innerHTML;
-        });
-    </script>
+    <script src="{{ asset('/dist/assets/extensions/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('/dist/assets/static/js/pages/tinymce.js') }}"></script>
 @endsection
