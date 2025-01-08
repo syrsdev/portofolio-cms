@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('major');
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->char('start_date');
+            $table->char('end_date')->nullable();
             $table->timestamps();
         });
     }
