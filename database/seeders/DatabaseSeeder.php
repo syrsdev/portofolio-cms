@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
+use App\Models\Work_status;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,26 @@ class DatabaseSeeder extends Seeder
             'email' => 'surya.nata.aardhana@gmail.com',
             'password' => bcrypt('password'),
         ]);
+
+        Work_status::create(
+            [
+                'title' => 'Intership',
+            ],
+        );
+        Work_status::create(
+            [
+                'title' => 'Fulltime',
+            ],
+        );
+        Work_status::create(
+            [
+                'title' => 'Contact',
+            ],
+        );
+        Work_status::create(
+            [
+                'title' => 'Freelance',
+            ],
+        );
     }
 }
