@@ -27,7 +27,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="dark" class="form-label">About me</label>
-                                <textarea id="dark" cols="30" rows="10" name="about">{!! $data->about !!}</textarea>
+                                <textarea id="dark" cols="30" rows="10" name="about"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
