@@ -13,13 +13,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <!-- Quill Editor Container -->
-                    <div id="full"></div>
-                    <!-- Hidden Input Field -->
-                    <input type="hidden" name="description" id="aboutInput">
+                    <textarea id="dark" cols="30" rows="10" name="about"></textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="link" class="form-label">Live Link</label>
+                    <label for="link" class="form-label">Demo Link</label>
                     <input type="text" class="form-control" id="link" name="link">
                 </div>
                 <div class="mb-3">
@@ -47,6 +44,11 @@
     <link rel="stylesheet" href="{{ asset('/dist/assets/extensions/toastify-js/src/toastify.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/assets/extensions/quill/quill.snow.css') }}">
     <link rel="stylesheet" href="{{ asset('/dist/assets/extensions/quill/quill.bubble.css') }}">
+    <style>
+        .tox .tox-promotion {
+            display: none !important;
+        }
+    </style>
 @endsection
 
 @section('script')
@@ -71,17 +73,6 @@
     <script src="{{ asset('/dist/assets/extensions/filepond/filepond.js') }}"></script>
     <script src="{{ asset('/dist/assets/extensions/toastify-js/src/toastify.js') }}"></script>
     <script src="{{ asset('/dist/assets/static/js/pages/filepond.js') }}"></script>
-    <script src="{{ asset('/dist/assets/extensions/quill/quill.min.js') }}"></script>
-    <script>
-        // Initialize Quill editor
-        var quill = new Quill('#full', {
-            theme: 'snow'
-        });
-
-        // Handle form submission
-        document.getElementById('form').addEventListener('submit', function() {
-            // Copy content from Quill editor to hidden input
-            document.getElementById('aboutInput').value = quill.root.innerHTML;
-        });
-    </script>
+    <script src="{{ asset('/dist/assets/extensions/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('/dist/assets/static/js/pages/tinymce.js') }}"></script>
 @endsection
