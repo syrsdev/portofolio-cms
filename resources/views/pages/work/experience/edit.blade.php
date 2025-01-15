@@ -41,7 +41,7 @@
                     <input class="form-check-input" type="checkbox" value="" id="current_date"
                         {{ $data->end_date == null ? 'checked' : '' }}>
                     <label class="form-check-label" for="current_date">
-                        current education
+                        current work
                     </label>
                 </div>
                 <div class="mb-3">

@@ -38,7 +38,7 @@
                 <div class="mb-3 form-check">
                     <input class="form-check-input" type="checkbox" value="" id="current_date">
                     <label class="form-check-label" for="current_date">
-                        current education
+                        current work
                     </label>
                 </div>
                 <div class="mb-3">
