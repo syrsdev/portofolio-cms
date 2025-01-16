@@ -13,7 +13,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea id="dark" cols="30" rows="10" name="about"></textarea>
+                    <textarea id="dark" cols="30" rows="10" name="description"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="link" class="form-label">Demo Link</label>
