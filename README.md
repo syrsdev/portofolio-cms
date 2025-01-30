@@ -16,9 +16,9 @@ This repository was created to store the CMS code of the dynamic personal portfo
 
 **Frontend:** ReactJS, TailwindCSS, axios, react-router-dom
 
-**Backend CMS:** Laravel, Bootstrap
+**Backend CMS:** PHP, Laravel, Bootstrap
 
-**Backend API:** Laravel
+**Backend API:** PHP, Laravel
 
 **Database:** Mysql
 
