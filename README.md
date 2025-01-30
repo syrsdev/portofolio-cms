@@ -49,6 +49,8 @@ Install dependencies
 
 ```bash
   composer install
+
+  npm install
 ```
 
 Environment
