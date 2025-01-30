@@ -26,8 +26,9 @@ This repository was created to store the CMS code of the dynamic personal portfo
 ## Features
 
 - database migration
-- RESTful API
-- API Routing and Distribution
+- Content Manaement System
+- Dinamic Data
+- CRUD personal data
 
 
 
