@@ -1,10 +1,10 @@
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://github.com/syrsdev/portofolio-web/blob/main/public/assets/nataniel-purple.svg)
 
 
-# Portfolio Website - API
+# Portfolio Website - CMS (Content Management System)
 
-This repository was created to store the backend api code of the dynamic personal portfolio website
+This repository was created to store the CMS code of the dynamic personal portfolio website
 
 
 ## License
@@ -36,13 +36,13 @@ This repository was created to store the backend api code of the dynamic persona
 Clone the project
 
 ```bash
-  git clone https://github.com/syrsdev/portofolio-api
+  git clone https://github.com/syrsdev/portofolio-cms
 ```
 
 Go to the project directory
 
 ```bash
-  cd portofolio-api
+  cd portofolio-cms
 ```
 
 Install dependencies
@@ -73,7 +73,10 @@ Database & App setup
 Start the server
 
 ```bash
-  php artisan serve
+  php artisan serve --port=8081
+
+  open another terminal and run:
+  npm run dev
 ```
 
 ### Install and run the Website
