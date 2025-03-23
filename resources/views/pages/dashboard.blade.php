@@ -129,7 +129,8 @@
                                 @foreach ($education as $item)
                                     <div class="mb-5">
                                         <h5 class="fs-5 fw-bold">{{ $item->name }}</h5>
-                                        <p class="mb-0">{{ $item->start_date }} - {{ $item->end_date }}</p>
+                                        <p class="mb-0">{{ $item->start_date }} -
+                                            {{ $item->end_date == null ? 'present' : $item->end_date }}</p>
                                     </div>
                                 @endforeach
                             @endif
