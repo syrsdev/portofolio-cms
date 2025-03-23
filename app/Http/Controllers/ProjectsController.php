@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectsController extends Controller
 {
@@ -47,6 +48,7 @@ class ProjectsController extends Controller
             'figma_link' => 'nullable',
         ]);
 
+        $credentials['slug'] = Str::slug($credentials['title']);
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -99,6 +101,8 @@ class ProjectsController extends Controller
             $url = url('/images/projects/' . $filename);
             $credentials['image'] = $url;
         }
+
+        $credentials['slug'] = Str::slug($credentials['title']);
 
         $project->update($credentials);
         return redirect('/dashboard/projects')->with('success', 'Project updated successfully');

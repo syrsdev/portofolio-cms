@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->string('github_link')->nullable();
             $table->string('figma_link')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }
