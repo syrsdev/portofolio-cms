@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('link')->nullable();
             $table->string('github_link')->nullable();
             $table->string('figma_link')->nullable();
