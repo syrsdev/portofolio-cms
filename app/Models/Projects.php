@@ -9,4 +9,9 @@ class Projects extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function projectSkills()
+    {
+        return $this->hasMany(projectSkills::class, 'project_id', 'id');
+    }
 }

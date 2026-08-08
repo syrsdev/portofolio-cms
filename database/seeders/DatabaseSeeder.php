@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         Work_status::create(
             [
-                'title' => 'Intership',
+                'title' => 'Internship',
             ],
         );
         Work_status::create(
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         );
         Work_status::create(
             [
-                'title' => 'Contact',
+                'title' => 'Contract',
             ],
         );
         Work_status::create(
